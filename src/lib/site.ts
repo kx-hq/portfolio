@@ -23,7 +23,9 @@ export function getAbout(): About {
     name: data.name,
     photo: data.photo,
     resumeUrl: data.resumeUrl,
-    bio: content.trim(),
+    // Collapse single line-wraps from the source file into spaces,
+    // but keep intentional blank-line paragraph breaks.
+    bio: content.trim().replace(/\n(?!\n)/g, " "),
   };
 }
 

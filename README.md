@@ -1,36 +1,42 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Karen Xie — Portfolio
 
-## Getting Started
+Personal portfolio site. See [`CLAUDE.md`](./CLAUDE.md) for the full design rationale,
+content model, and decisions log.
 
-First, run the development server:
+## Running locally
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Adding a project
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Each project on the home page is one Markdown file in [`content/projects`](./content/projects).
 
-## Learn More
+1. Copy an existing file in that folder as a template.
+2. Fill in the frontmatter:
+   - `title`, `tabLabel`, `summary`, `role`, `dates`, `tags`, `links`, `coverImage`
+   - `color`: one of `grey`, `blush`, `sand`, `peach`
+   - `order`: a number — lower numbers appear first in the stack
+   - `featured`: `true`/`false`
+3. Write the body below the frontmatter (Markdown) — this is the "what I built" /
+   "the result" narrative shown on the project's page.
+4. Add a cover image to `/public` if you have one, and point `coverImage` at it.
+5. Commit. The folder appears automatically; no code changes needed.
 
-To learn more about Next.js, take a look at the following resources:
+Editing `about.md` or `contact.md` in [`content`](./content) updates the About/Contact
+sections the same way.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Deploying
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+The site is deployed on [Vercel](https://vercel.com), connected to this repo's `main`
+branch. Every push to `main` triggers a production deploy; other branches and pull
+requests get their own preview URLs automatically.
 
-## Deploy on Vercel
+## Stack
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Next.js (App Router, static generation) + Tailwind CSS v4 + Motion + Markdown content.
+No backend. See `CLAUDE.md` for why.
